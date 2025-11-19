@@ -23,7 +23,7 @@ Tujuan dari proyek ini adalah:
 
 Berikut adalah contoh hewan unik yang bisa kamu masukkan ke dalam konten (sesuaikan dengan apa yang sudah ada di websitemu):
 
-1. **Axolotl** — dengan wajah yang lucu :contentReference[oaicite:0]{index=0}  
+1. **Axolotl** — dengan wajah yang lucu.  
 
 *(Catatan: kalau daftar hewan unik di web kamu berbeda, silakan sesuaikan poin-poin di atas.)*
 
