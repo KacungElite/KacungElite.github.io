@@ -19,6 +19,15 @@ Tujuan dari proyek ini adalah:
 
 ---
 
+## ✨ Fitur Utama
+
+* **Informasi Detail:** Menyajikan deskripsi singkat dan fakta menarik tentang 8 jenis hewan unik.
+* **Tampilan Responsif:** Desain yang dioptimalkan untuk berbagai ukuran layar, termasuk perangkat seluler dan desktop.
+* **Desain Bersih:** Antarmuka pengguna yang minimalis, intuitif, dan mudah dinavigasi.
+* **Galeri Gambar:** Setiap hewan dilengkapi dengan gambar yang relevan.
+
+---
+
 ## 🐾 Daftar 8 Hewan
 
 Berikut adalah contoh hewan unik yang bisa kamu masukkan ke dalam konten (sesuaikan dengan apa yang sudah ada di websitemu):
