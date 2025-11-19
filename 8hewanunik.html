@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 CONTOH HEWAN UNIK DI DUNIA</title>
+    <!-- Memuat Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Awesome untuk ikon --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoIF2dgmJraU5/S8/7p0K8b9Q51w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Konfigurasi Tailwind untuk font Inter --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', 
+                        secondary: '#1e40af', 
+                        accent: '#f97316', 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mengatur font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e2e8f0; 
+        }
+        /* Custom CSS untuk gambar latar belakang pada header */
+        .header-bg {
+            background-image: url('img/hutan.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Efek transisi untuk perubahan konten */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Style untuk tombol kembali yang melayang */
+        .back-button-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden transform hover:scale-[1.005] transition-transform duration-300">
+        
+        <!-- Header Utama - DIBERIKAN GAMBAR LATAR BELAKANG -->
+        <header class="header-bg p-6 text-white shadow-md relative overflow-hidden">
+            <!-- Overlay untuk membuat teks tetap terbaca dengan jelas -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-700/70"></div>
+            
+            <!-- Konten di dalam overlay agar selalu di depan -->
+            <div class="relative z-10 flex justify-between content-center">
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight flex items-center">
+                     8 HEWAN UNIK DI DUNIA
+                    </h1>
+                    <p class="mt-2 text-blue-200 text-lg">Klik gambar dibawah ini jika anda ingin tau tentang deskripsi hewan tersebut!</p>
+                </div>
+                <img src="/img/ai-removebg-preview.png" alt="" width="100%" style="width: 150px;">
+            </div>
+        </header>
+
+        <!-- Area Konten Utama (Tempat Daftar Hewan atau Detail Hewan akan dirender) -->
+        <div id="content-area" class="p-6">
+            <!-- Konten akan dimuat di sini oleh JavaScript -->
+        </div>
+
+        <!-- Tombol Kembali yang melayang (Akan disembunyikan/ditampilkan oleh JS) -->
+        <div id="back-button-container" class="back-button-fixed hidden">
+            <button onclick="renderList()" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
+            </button>
+        </div>
+
+        <!-- Footer --><footer class="p-4 text-center text-sm text-gray-600 border-t-2 border-blue-100 bg-gray-50 mt-8">
+            <i class="fas fa-info-circle mr-2 text-blue-500"></i> Data diambil dari sumber-sumber umum tentang fauna.
+        </footer>
+
+    </div>
+
+    <script>
+        // Data Hewan dalam struktur JavaScript
+        const animals = {
+            axolotl: {
+                name: "Axolotl",
+                scientific: "Ambystoma mexicanum",
+                image: "img/axolotl.webp",
+                icon: "fas fa-fish text-blue-600",
+                color: "border-blue-200",
+                description: "Axolotl adalah salamander Meksiko yang luar biasa. Tidak seperti amfibi lainnya, ia menjalani seluruh hidupnya di air, mempertahankan fitur larva seperti insang luarnya yang berbulu dan seperti hiasan. Keunikan terbesar mereka adalah kemampuan regenerasi yang ekstrem: mereka dapat menumbuhkan kembali anggota badan yang hilang, bagian otak, dan bahkan jantung tanpa meninggalkan jaringan parut. Mereka adalah contoh neoteny yang hidup.",
+                habitat: "Danau Xochimilco dan kanal-kanal di dekat Mexico City.",
+                status: "Terancam Kritis (Critically Endangered) di alam liar."
+            },
+            redhandfish: {
+                name: "Ikan Tangan Merah",
+                scientific: "Thymichthys politus",
+                image: "img/ikantanganmerah.jpg",
+                icon: "fas fa-fish text-red-600",
+                color: "border-red-200",
+                description: "Ikan Tangan Merah adalah salah satu ikan paling langka di dunia, dinamai demikian karena siripnya yang termodifikasi menyerupai tangan kecil. Alih-alih berenang seperti ikan pada umumnya, mereka 'berjalan' melintasi dasar laut menggunakan sirip ini. Mereka hanya ditemukan di dua lokasi terisolasi di lepas pantai Tasmania, menjadikannya spesies endemik yang sangat rentan.",
+                habitat: "Terumbu karang dan rumput laut di perairan dangkal Tasmania, Australia.",
+                status: "Terancam Punah (Endangered)."
+            },
+            okapi: {
+                name: "Okapi",
+                scientific: "Okapia johnstoni",
+                image: "img/Okapi.webp",
+                icon: "fas fa-leaf text-green-600",
+                color: "border-green-200",
+                description: "Okapi, kadang disebut 'Jerapah Hutan,' adalah mamalia unik yang berkerabat dekat dengan jerapah. Ia memiliki leher yang lebih pendek dan garis-garis zebra yang khas pada kaki dan bagian belakangnya, yang berfungsi sebagai kamuflase di hutan lebat. Ia memiliki lidah biru-kehitaman yang sangat panjang, yang dapat digunakan untuk membersihkan kelopak mata dan telinganya sendiri.",
+                habitat: "Hutan Hujan Ituri di Republik Demokratik Kongo (endemik).",
+                status: "Terancam Punah (Endangered)."
+            },
+            shoebill: {
+                name: "Burung Shoebill",
+                scientific: "Balaeniceps rex",
+                image: "img/burungshoebil.jpeg",
+                icon: "fas fa-crow text-yellow-600",
+                color: "border-yellow-200",
+                description: "Shoebill adalah burung bangau besar dengan paruh besar berbentuk sepatu kayu yang unik, yang memberikan julukannya. Burung ini dikenal karena perawakannya yang tidak bergerak, sering kali membeku di tempatnya untuk waktu yang lama saat berburu. Perilaku ini, ditambah dengan matanya yang besar dan menghadap ke depan, memberinya penampilan yang sangat purba dan unik.",
+                habitat: "Rawa-rawa air tawar di Afrika Timur dan Tengah.",
+                status: "Rentan (Vulnerable)."
+            },
+             pangolin: {
+                name: "Pangolin",
+                scientific: "Pholidota",
+                image: "img/Pangolin.jpg",
+                icon: "fas fa-shield-alt text-gray-700",
+                color: "border-gray-300",
+                description: "Pangolin adalah satu-satunya mamalia yang seluruh tubuhnya tertutup sisik keratin yang besar dan keras, seperti baju zirah. Ketika merasa terancam, ia akan menggulung dirinya menjadi bola ketat untuk melindungi bagian perutnya yang lembut. Mereka adalah pemakan serangga nokturnal, menggunakan lidah super panjang dan lengket mereka untuk menangkap semut dan rayap. Semua spesies Pangolin terancam karena perburuan dan perdagangan ilegal.",
+                habitat: "Hutan dan padang rumput di Asia dan Afrika.",
+                status: "Berbagai spesies terdaftar dari Rentan hingga Terancam Kritis."
+            },
+            
+            glasseel: {
+                name: "Belut Kaca",
+                scientific: "Anguilla rostrata (untuk spesies Amerika)",
+                image: "img/belut.jpg", 
+                icon: "fas fa-eye text-indigo-600",
+                color: "border-indigo-200",
+                description: "Belut Kaca adalah tahap remaja (disebut *elver*) dari berbagai spesies belut. Mereka diberi nama 'kaca' karena tubuh mereka yang hampir **sepenuhnya transparan**. Tahap transparan ini adalah adaptasi kamuflase yang memungkinkan mereka melakukan migrasi besar-besaran dari laut dalam menuju perairan air tawar tanpa terdeteksi oleh predator. Belut ini menunjukkan siklus hidup katadromik, yaitu lahir di laut, hidup di air tawar, dan kembali ke laut untuk bereproduksi.",
+                habitat: "Samudra (tempat berkembang biak) dan sungai air tawar di Amerika Utara dan Eropa.",
+                status: "Berbagai spesies terdaftar dari Rentan hingga Terancam Kritis."
+            },
+            narwhal: {
+                name: "Narwhal",
+                scientific: "Monodon monoceros",
+                image: "img/narwhal.webp", 
+                icon: "fas fa-water text-cyan-600",
+                color: "border-cyan-200",
+                description: "Narwhal, yang dijuluki 'unicorn laut', adalah spesies paus bergigi yang paling mudah dikenali dari taring panjang yang menonjol dari rahang atas jantan. Taring ini sebenarnya adalah gigi yang memanjang hingga 3 meter. Taring tersebut diyakini berfungsi sebagai organ sensorik besar dengan jutaan ujung saraf yang membantu mendeteksi perubahan suhu, tekanan, dan partikel di dalam air.",
+                habitat: "Perairan Arktik di sekitar Greenland, Kanada, dan Rusia.",
+                status: "Hampir Terancam (Near Threatened)."
+            },
+            pignosedturtle: {
+                name: "Kura-kura Hidung Babi",
+                scientific: "Carettochelys insculpta",
+                image: "img/kura.webp", 
+                icon: "fas fa-frog text-teal-600",
+                color: "border-teal-200",
+                description: "Kura-kura Hidung Babi adalah satu-satunya anggota yang masih hidup dari keluarga Carettochelyidae, menjadikannya 'fosil hidup'. Ia memiliki ciri khas moncong berdaging seperti babi dengan lubang hidung yang terletak di ujungnya, digunakan sebagai snorkel. Mereka juga unik karena siripnya yang menyerupai kura-kura laut, meskipun mereka adalah spesies air tawar, dan tempurungnya tidak memiliki perisai terpisah yang keras.",
+                habitat: "Sungai, anak sungai, dan danau di Northern Territory Australia dan Papua Nugini.",
+                status: "Rentan (Vulnerable)."
+            }
+            
+        };
+
+        const contentArea = document.getElementById('content-area');
+        const backButtonContainer = document.getElementById('back-button-container');
+
+        // Fungsi untuk merender daftar hewan (halaman pertama)
+        function renderList() {
+            // Sembunyikan tombol kembali
+            backButtonContainer.classList.add('hidden');
+
+            // Render daftar hewan
+            let htmlContent = '<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 fade-in">';
+            
+            Object.keys(animals).forEach(key => {
+                const animal = animals[key];
+                
+                htmlContent += `
+                    <div class="p-4 bg-white border border-gray-100 rounded-xl shadow-lg cursor-pointer transition duration-300 transform hover:scale-[1.02] hover:shadow-xl" onclick="renderDetail('${key}')">
+                        <div class="relative overflow-hidden rounded-xl h-48 mb-4">
+                            <img src="${animal.image}" onerror="this.src='https://placehold.co/400x400/cccccc/333333?text=Gagal+Muat'" alt="${animal.name}" class="w-full h-full object-cover">
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800 text-center flex items-center justify-center">
+                             <i class="${animal.icon} mr-3"></i> ${animal.name}
+                        </h2>
+                        <p class="text-sm text-gray-500 text-center mt-1">(${animal.scientific})</p>
+                    </div>
+                `;
+            });
+
+            htmlContent += '</div>';
+            contentArea.innerHTML = htmlContent;
+        }
+
+        // Fungsi untuk merender detail hewan
+        function renderDetail(key) {
+            const animal = animals[key];
+            if (!animal) {
+                renderList();
+                return;
+            }
+
+            // Tampilkan tombol kembali
+            backButtonContainer.classList.remove('hidden');
+
+            const htmlContent = `
+                <div class="p-4 fade-in">
+                    <section class="border border-gray-200 p-6 rounded-xl shadow-2xl bg-white">
+                        <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center justify-center sm:justify-start">
+                            <i class="${animal.icon.replace('text-blue-600', 'text-primary').replace('text-red-600', 'text-red-500').replace('text-green-600', 'text-green-500').replace('text-yellow-600', 'text-yellow-500')} text-4xl mr-4"></i> 
+                            ${animal.name} 
+                            <span class="text-lg font-normal text-gray-500 ml-4 hidden sm:inline">(${animal.scientific})</span>
+                        </h2>
+
+                        <div class="flex flex-col md:flex-row md:space-x-6 items-start">
+                            <!-- Gambar Detail -->
+                            <a href="${animal.image}" target="_blank" class="block w-full md:w-1/3 mb-6 md:mb-0 transition duration-300 hover:opacity-90">
+                                <img src="${animal.image}" onerror="this.src='https://placehold.co/400x400/cccccc/333333?text=Gagal+Muat'" alt="${animal.name}" class="w-full h-64 object-cover rounded-xl shadow-lg border-4 ${animal.color}">
+                            </a>
+
+                            <!-- Deskripsi & Detail -->
+                            <div class="md:w-2/3">
+                                <p class="text-gray-700 leading-relaxed text-lg mb-6 p-4 border-l-4 border-primary bg-blue-50/50 rounded-lg">
+                                    ${animal.description}
+                                </p>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center text-gray-700">
+                                        <i class="fas fa-map-marker-alt text-red-500 mr-3 text-lg"></i> 
+                                        <span class="font-semibold mr-2">Habitat:</span>
+                                        <span class="flex-1">${animal.habitat}</span>
+                                    </div>
+                                    <div class="flex items-center text-gray-700">
+                                        <i class="fas fa-exclamation-triangle text-orange-500 mr-3 text-lg"></i> 
+                                        <span class="font-semibold mr-2">Status Konservasi:</span>
+                                        <span class="flex-1">${animal.status}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+            contentArea.innerHTML = htmlContent;
+            // Scroll ke atas setelah menampilkan detail
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Tampilkan daftar saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', renderList);
+    </script>
+
+</body>
+</html>
